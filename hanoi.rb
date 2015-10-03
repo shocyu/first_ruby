@@ -1,4 +1,4 @@
-#３本のポール番号の初期化
+#３本のポール番号の初期化（stackは間に入るポール）
 start = 0
 goal = 0
 stack = 0
@@ -8,11 +8,10 @@ u = 0
 v = 0
 x = 0
 
-#入力情報の取り込み（コマの個数、試行回数）
-s = gets.chomp.split(" ")
+#入力情報の取り込み（コマの個数）
+n = gets.to_i
 
-n = s[0].to_i
-times = s[1].to_i
+
 
 #最小試行回数（2^n -1  回）
 max = (2 ** n) - 1
@@ -22,18 +21,6 @@ move = Array.new(max)
 
 0.upto(max-1) do |i|
     move[i] =Array.new(3, 0)
-end
-
-#塔の状態を表す配列(status配列、３行ｎ列)
-status = Array.new(3)
-
-0.upto(2) do |i|
-    status[i] = Array.new(n)
-end
-
-#ハノイの塔のスタート状態（初期化）
-for i in 0..(n-1) do
-    status[0][i] = n - i
 end
 
 #move配列の最初の配置(ｎ番目（ラスト)のコマを１から３へ）
